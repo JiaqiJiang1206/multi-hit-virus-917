@@ -9,7 +9,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3001;
 
 const server = app.listen(PORT, () => {
   console.log("My socket server is running");
