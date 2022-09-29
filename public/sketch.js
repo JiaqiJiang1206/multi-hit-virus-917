@@ -1,6 +1,6 @@
 // const { text } = require("express");
 //8_17_2
-var socket = null;
+var socket;//= null;
 let video;
 let poseNet;
 let pose;
@@ -84,8 +84,6 @@ function setup() {
 	});
 
 	count = 0;
-
-
 
 }
 
