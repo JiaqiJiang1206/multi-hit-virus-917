@@ -30,8 +30,10 @@ function preload(){
 function setup() {
 	// socket = io.connect('https://multi-hit-virus-7gjqnt40c3aaa635-1309180325.ap-shanghai.app.tcloudbase.com/');
 	// socket = io.connect('https://multi-hit-virus.herokuapp.com/');
-	socket = io.connect('http://localhost:3000');
+	socket = io.connect('http://127.0.0.1:3000');
 	// socket = io.connect('http://192.168.8.160:3000');
+	// socket = io.connect('http://5386w319o8.qicp.vip/');
+
 
 	//画布大小跟随窗口
 	createCanvas(windowHeight*1.78, windowHeight);
