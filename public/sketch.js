@@ -18,6 +18,7 @@ let clients0 = 0;
 let count = 0;//病毒被击中的次数
 let xueLiang;//病毒血量
 let cal;//判定成功一次减少的血量
+let countTemp = 0;
 
 
 
@@ -31,7 +32,7 @@ function setup() {
 	// socket = io.connect('https://multi-hit-virus-7gjqnt40c3aaa635-1309180325.ap-shanghai.app.tcloudbase.com/');
 	// socket = io.connect('https://multi-hit-virus.herokuapp.com/');
 	socket = io.connect('https://multi-hit-virus-2.herokuapp.com/');
-	// socket = io.connect('http://127.0.0.1:3001');
+	// socket = io.connect('http://127.0.0.1:3000');
 	// socket = io.connect('http://192.168.8.160:3000');
 	// socket = io.connect('http://5386w319o8.qicp.vip/');
 
@@ -208,10 +209,15 @@ function draw(){//buduanxunhuanzhixing
 			scores++;
 			virusR += 10;//放到服务端上
 			socket.emit('virus', data);
-			count++;
+			// count++;
+			socket.emit('count',countTemp);
 			//console.log(scores);
 
+
 		}
+		socket.on('count',function(countTemp){
+			count=countTemp;
+		})
 		// console.log(d1);
 		if(width/1.5 - count*cal - width/3 > 10){//根据血量判定游戏结束
 			image(evilVirus, width/2.35, 20, width/6.5, width/6.5-virusR);//显示正上方的病毒

@@ -9,7 +9,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-var PORT = process.env.PORT || 3001;
+var PORT = process.env.PORT || 3000;
 
 const server = app.listen(PORT, () => {
   console.log("My socket server is running");
@@ -20,6 +20,7 @@ const io = require('socket.io')(server);
 app.use(express.static('public'));
 
 let clients = 0;
+// let countTemp = 0;
 io.sockets.emit('serverMsg', clients);
 
 io.sockets.on('connect',     //新建一个客户端则被调用三次（为什么是三次？（理应是一次吧
@@ -62,6 +63,9 @@ io.sockets.on('connect',     //新建一个客户端则被调用三次（为什�
 
         io.sockets.emit('virus', data);//向所有客户端传输游戏数据
       })
-      
+      socket.on('count',function(countTemp){
+          countTemp++;
+          io.sockets.emit('count', countTemp);
+      })
     }
 );
