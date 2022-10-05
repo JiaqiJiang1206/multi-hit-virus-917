@@ -20,7 +20,9 @@ const io = require('socket.io')(server);
 app.use(express.static('public'));
 
 let clients = 0;
-// let countTemp = 0;
+let countTemp = 0;
+
+
 io.sockets.emit('serverMsg', clients);
 
 io.sockets.on('connect',     //新建一个客户端则被调用三次（为什么是三次？（理应是一次吧
@@ -63,9 +65,13 @@ io.sockets.on('connect',     //新建一个客户端则被调用三次（为什�
 
         io.sockets.emit('virus', data);//向所有客户端传输游戏数据
       })
-      socket.on('count',function(countTemp){
+
+      socket.on('count',function(count){
           countTemp++;
+          // count=countTemp;
           io.sockets.emit('count', countTemp);
+          console.log('countTemp',countTemp)
       })
+
     }
 );
