@@ -31,8 +31,8 @@ function preload(){
 function setup() {
 	// socket = io.connect('https://multi-hit-virus-7gjqnt40c3aaa635-1309180325.ap-shanghai.app.tcloudbase.com/');
 	// socket = io.connect('https://multi-hit-virus.herokuapp.com/');
-	// socket = io.connect('https://multi-hit-virus-2.herokuapp.com/');
-	socket = io.connect('http://127.0.0.1:3000');
+	socket = io.connect('https://multi-hit-virus-2.herokuapp.com/');
+	// socket = io.connect('http://127.0.0.1:3000');
 	// socket = io.connect('http://192.168.8.160:3000');
 	// socket = io.connect('http://5386w319o8.qicp.vip/');
 
@@ -166,11 +166,11 @@ function draw(){//buduanxunhuanzhixing
 
 	if(pose){
 		let d = dist(pose.leftElbow.x, pose.leftElbow.y, pose.rightElbow.x, pose.rightElbow.y);//计算左右手肘的距离
-		if(d>width*0.75){
+		if(d>width*0.5){
 			bulState = 0;
 			x = height/1.68 + cha - ran;
 			//console.log(x);
-			if( x < 10 & x > -10){
+			if( x < 40 & x > -40){
 				bulState = 1;
 			}
 			dan = 0;
